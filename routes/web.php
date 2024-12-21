@@ -14,6 +14,6 @@ Route::get('/nosotros', function(){
     return view('nosotros');
 });
 
-Route::get('/registro', [RegistroController::class, 'index']);
+Route::get('/registro', [RegistroController::class, 'index'])->name('registro');
+Route::post('/registro', [RegistroController::class, 'store'])->name('registro');
 Route::get('/autenticar', [RegistroController::class, 'auntenticar']);
-Route::post('/enviar', [RegistroController::class, 'submit']);

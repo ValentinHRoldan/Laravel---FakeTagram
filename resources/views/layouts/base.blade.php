@@ -12,7 +12,7 @@
                 <a href="/"><h1 class="text-3xl font-black cursor-pointer">DevsTagram</h1></a>
                 <nav class="flex gap-2 items-center">
                     <a href="" class="text-sm font-bold text-gray-600 uppercase">Login</a>
-                    <a href="/registro" class="text-sm font-bold text-gray-600 uppercase">Crear Cuenta</a>
+                    <a href="{{route('registro')}}" class="text-sm font-bold text-gray-600 uppercase">Crear Cuenta</a>
                 </nav>
             </div>
         </header>

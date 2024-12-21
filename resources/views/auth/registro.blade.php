@@ -14,10 +14,14 @@ Crear una cuenta en DevsTagram
             <img src="{{asset('img/f2.jpg')}}" alt="">
         </div>
         <div class="md:w-4/12 bg-white p-6 rounded-lg shadow">
-            <form action="/enviar" method="POST">
+            <form action="{{route('registro')}}" method="POST">
+                @csrf
                 <div class="mb-5">
                     <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">Nombre:</label>
-                    <input type="text" id="name" name="name" class="border p-4 w-full rounded-lg" placeholder="Nombre">
+                    <input type="text" id="name" name="name" class="border p-4 w-full rounded-lg @error('name') border-red-700 @enderror" placeholder="Nombre" value="{{ old('name')}}">
+                    @error('name')
+                        <p class="bg-red-700 text-white my-2 rounded-lg text-sm p-2 text-center font-bold">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="mb-5">
                     <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">Username:</label>
