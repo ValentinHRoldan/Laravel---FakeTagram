@@ -1,0 +1,17 @@
+composer install -> carpeta vendor
+npm i -> carpeta node_modules
+php artisan key:generate -> generar clave de aplicacion
+
+el proyecto incluye un archivo .env-example
+este nos sirve como guia para el archivo .env verdadero, que nos servirá 
+para hacer la conexion a la base de datos
+este archivo incluye informacion sensible como claves etc
+por eso el .env de verdad debe incluirse dentro de un .gitignore
+
+
+para crear un controlador
+php artisan make:controller <nombre controlador> 
+
+
+para crear dentro de una carpeta
+php artisan make:controller <nombre carpeta>\\<nombre controlador> 
