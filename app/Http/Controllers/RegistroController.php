@@ -13,4 +13,8 @@ class RegistroController extends Controller
     public function autenticar(){
         return 0;
     }
+
+    public function submit(){
+        dd("..Post");
+    }
 }

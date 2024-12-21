@@ -16,3 +16,4 @@ Route::get('/nosotros', function(){
 
 Route::get('/registro', [RegistroController::class, 'index']);
 Route::get('/autenticar', [RegistroController::class, 'auntenticar']);
+Route::post('/enviar', [RegistroController::class, 'submit']);

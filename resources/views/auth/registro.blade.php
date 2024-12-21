@@ -14,7 +14,7 @@ Crear una cuenta en DevsTagram
             <img src="{{asset('img/f2.jpg')}}" alt="">
         </div>
         <div class="md:w-4/12 bg-white p-6 rounded-lg shadow">
-            <form action="">
+            <form action="/enviar" method="POST">
                 <div class="mb-5">
                     <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">Nombre:</label>
                     <input type="text" id="name" name="name" class="border p-4 w-full rounded-lg" placeholder="Nombre">
