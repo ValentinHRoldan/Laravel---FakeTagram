@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegistroController extends Controller
 {
@@ -17,11 +18,6 @@ class RegistroController extends Controller
     }
 
     public function store(Request $r){
-        // dd($r->get('name'));
-        //otra forma
-        // dd($r->name);
-        //validacion en laravel
-
         $r->request->add([
             'username' => Str::slug($r->username)
         ]);
@@ -35,12 +31,25 @@ class RegistroController extends Controller
         ]);
 
         User::create([
+            // 'name' => $r.get('name');
             'name' => $r->name,
             'username' => $r->username, //convierte el username en formato url
+            'email' => $r->email,
+            'password' => $r->password,
+        ]);
+
+        //autenticar usuario
+        Auth::attempt([
             'email' => $r->email,
             'password' => $r->password
         ]);
 
+        //otra forma de autenticar
+
+        // Auth::attempt($r->only('email', 'password'));
+
+
+        //redireccion
         return redirect()->route('post.index');
     }
 }

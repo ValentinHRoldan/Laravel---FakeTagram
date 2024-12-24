@@ -3,16 +3,16 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        @vite('resources/css/app.css');
+        @vite('resources/css/app.css')
         <title>@yield('tituloHead')</title>
     </head>
-    <body class="bg-gray-100">
-        <header class="p-5 border-b bg-white shadow">
+    <body class="bg-slate-700 text-white m-0">
+        <header class="p-5 bg-orange-700 m-0">
             <div class="container mx-auto flex justify-between items-center">
                 <a href="/"><h1 class="text-3xl font-black cursor-pointer">DevsTagram</h1></a>
                 <nav class="flex gap-2 items-center">
-                    <a href="" class="text-sm font-bold text-gray-600 uppercase">Login</a>
-                    <a href="{{route('registro')}}" class="text-sm font-bold text-gray-600 uppercase">Crear Cuenta</a>
+                    <a href="{{ route('login') }}" class="text-sm font-bold text-gray-50 uppercase">Login</a>
+                    <a href="{{route('registro')}}" class="text-sm font-bold text-gray-50 uppercase">Crear Cuenta</a>
                 </nav>
             </div>
         </header>

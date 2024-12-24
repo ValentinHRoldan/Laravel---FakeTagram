@@ -52,7 +52,7 @@ Crear una cuenta en DevsTagram
                     @enderror
                 </div>
                 <br>
-                <input type="submit" value="Crear Cuenta" class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-4 rounded-lg text-white">
+                <input type="submit" value="Crear Cuenta" class="bg-orange-600 hover:bg-orange-700 transition-colors cursor-pointer uppercase font-bold w-full p-4 rounded-lg text-white">
             </form>
         </div>  
     </div>
