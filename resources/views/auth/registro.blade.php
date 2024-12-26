@@ -13,7 +13,7 @@ Crear una cuenta en DevsTagram
         <div class="md:w-6/12 p-20">
             <img src="{{asset('img/f2.jpg')}}" alt="">
         </div>
-        <div class="md:w-4/12 bg-white p-6 rounded-lg shadow">
+        <div class="md:w-4/12 bg-white text-black p-6 rounded-lg shadow">
             <form action="{{route('registro')}}" method="POST">
                 @csrf
                 <div class="mb-5">
