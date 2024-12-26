@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,6 +21,10 @@ class LoginController extends Controller
         if(!Auth::attempt(['email' => $r->email, 'password' => $r->password], $r->remember)){
             return back()->with('mensaje', 'credenciales incorrectas');
         }
-        return redirect()->route('post.index');
+
+        $user = User::where('email', $r->email)->first();
+        return redirect()->route('post.index', [
+            'user' => $user->username
+        ]);
     }
 }

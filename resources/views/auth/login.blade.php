@@ -37,7 +37,7 @@ Iniciar Sesion En DevsTagram
                     <input type="checkbox" name="remember" class="text-sm text-gray-600"> Mantener la sesion abierta
                 </div>
                 <br>
-                <input type="submit" value="Iniciar Sesion" class="bg-orange-600 hover:bg-orange-700 transition-colors cursor-pointer uppercase font-bold w-full p-4 rounded-lg text-white">
+                <input type="submit" value="Iniciar Sesion" class="bg-green-700 hover:bg-green-800 transition-colors cursor-pointer uppercase font-bold w-full p-4 rounded-lg text-white">
             </form>
         </div>  
     </div>

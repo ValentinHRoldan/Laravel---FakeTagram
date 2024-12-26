@@ -50,6 +50,9 @@ class RegistroController extends Controller
 
 
         //redireccion
-        return redirect()->route('post.index');
+        $user = User::where('email', $r->email)->first();
+        return redirect()->route('post.index', [
+            'user' => $user->username
+        ]);
     }
 }
