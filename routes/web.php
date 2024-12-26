@@ -24,6 +24,9 @@ Route::get('/autenticar', [RegistroController::class, 'auntenticar']);
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('post.login');
 
-Route::get('/muro', [PostController::class, 'index'])->name('post.index')->middleware('auth');
-
 Route::post('/logout', [LogoutController::class, 'index'])->name('logout');
+
+//entre llave va el nombre del modelo, en este caso el modelo User
+//Route Model Binding
+Route::get('/{user:username}', [PostController::class, 'index'])->name('post.index')->middleware('auth');
+//con user nos traerá el id de la bd, con user:username nos traerá el nombre de usuario
