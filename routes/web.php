@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
@@ -30,3 +31,7 @@ Route::post('/logout', [LogoutController::class, 'index'])->name('logout');
 //Route Model Binding
 Route::get('/{user:username}', [PostController::class, 'index'])->name('post.index')->middleware('auth');
 //con user nos traerá el id de la bd, con user:username nos traerá el nombre de usuario
+
+Route::get('/post/create', [PostController::class, 'create'])->name('post.create')->middleware('auth');
+
+Route::post('/imagen', [ImagenController::class, 'store'])->name('imagen.post');

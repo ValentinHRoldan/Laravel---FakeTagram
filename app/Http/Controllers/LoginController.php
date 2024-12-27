@@ -22,9 +22,10 @@ class LoginController extends Controller
             return back()->with('mensaje', 'credenciales incorrectas');
         }
 
-        $user = User::where('email', $r->email)->first();
+        // $user = User::where('email', $r->email)->first();
+        //traer al usuario de la base de datos
         return redirect()->route('post.index', [
-            'user' => $user->username
+            'user' => Auth::user()->username
         ]);
     }
 }
