@@ -35,3 +35,5 @@ Route::get('/{user:username}', [PostController::class, 'index'])->name('post.ind
 Route::get('/post/create', [PostController::class, 'create'])->name('post.create')->middleware('auth');
 
 Route::post('/imagen', [ImagenController::class, 'store'])->name('imagen.post');
+
+Route::post('/posts', [PostController::class, 'store'])->name('post.store');

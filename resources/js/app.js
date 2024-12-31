@@ -1,4 +1,7 @@
 import Dropzone from 'dropzone';
+const d = document;
+const $formImg = d.getElementById("dropzone");
+const $imgInput = d.getElementById('imagen');
 
 Dropzone.autoDiscover = false;
 
@@ -8,5 +11,41 @@ const dropzone = new Dropzone("#dropzone", {
     addRemoveLinks: true,
     dictRemoveFile: "Eliminar archivo",
     maxFiles: 1,
-    uploadMultiple: false
+    uploadMultiple: false,
+
+    init: function(){
+        if($imgInput.value.trim()){
+            const imagenPublicada = {};
+            imagenPublicada.size = 123;
+            imagenPublicada.name = $imgInput.value;
+            this.options.addedfile.call(this, imagenPublicada);
+            this.options.thumbnail.call(this, imagenPublicada, `/uploads/${imagenPublicada.name}`);
+            imagenPublicada.previewElement.classList.add(
+                "dz-success",
+                "dz-complete"
+            )
+        }
+    },
+})
+
+dropzone.on("sending", function(file, xhr, formdata){
+    console.log(file);
+    $formImg.classList.remove("text-white");
+    $formImg.classList.add("text-red-700");
+    console.warn(formdata)
+})
+
+dropzone.on("success", function(file, response){
+    $imgInput.value = response.imagen;
+
+})
+
+dropzone.on("error", function(file, message){
+    console.log(file);
+})
+
+dropzone.on("removedfile", function(){
+    $formImg.classList.add("text-white");
+    $formImg.classList.remove("text-red-700");
+    $imgInput.value = "";
 })
