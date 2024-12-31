@@ -31,7 +31,7 @@ Nueva Publicacion
                 @enderror
             </div>
             <div class="mb-5">
-                <label for="titulo" class="mb-2 block uppercase text-gray-500 font-bold">Descripcion:</label>
+                <label for="descripcion" class="mb-2 block uppercase text-gray-500 font-bold">Descripcion:</label>
                 <textarea type="text" id="descripcion" name="descripcion" class="border p-4 w-full rounded-lg @error('descripcion') border-red-700 @enderror" placeholder="Descripcion" value="{{ old('descripcion')}}"></textarea>
                 @error('descripcion')
                     <p class="bg-red-700 text-white my-2 rounded-lg text-sm p-2 text-center font-bold">{{ $message }}</p>

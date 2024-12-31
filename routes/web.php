@@ -30,10 +30,12 @@ Route::post('/logout', [LogoutController::class, 'index'])->name('logout');
 //entre llave va el nombre del modelo, en este caso el modelo User
 //Route Model Binding
 Route::get('/{user:username}', [PostController::class, 'index'])->name('post.index')->middleware('auth');
-//con user nos traerá el id de la bd, con user:username nos traerá el nombre de usuario
+//con user usaremos el id de la bd, con user:username usaremos el nombre de usuario
 
 Route::get('/post/create', [PostController::class, 'create'])->name('post.create')->middleware('auth');
 
 Route::post('/imagen', [ImagenController::class, 'store'])->name('imagen.post');
 
 Route::post('/posts', [PostController::class, 'store'])->name('post.store');
+
+Route::get('/{user:username}/post/{post}', [PostController::class, 'show'])->name('post.show');

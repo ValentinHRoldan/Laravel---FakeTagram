@@ -10,8 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     public function index(User $user){
+        //si como parametro tenemos una variable sola, esto significa que se está recibiendo el nombre del usuario que indicamos en la url en el archivo de rutas
+        //si como parametro tenemos User $user estamos haciendo uso del route model binding de laravel, esto indica que laravel automaticamente busca en la base de datos con el nombre de usuario recibido del archivo de rutas
+
+        $postsUser = Post::where('user_id', $user->id)->paginate(8);
         return view('auth.dashboard', [
-            'user' => $user
+            'user' => $user,
+            'posts' => $postsUser
         ]);
     }
 
@@ -21,7 +26,7 @@ class PostController extends Controller
 
     public function store(Request $r){
         $r->validate([
-            'titulo' => 'required|max:20',
+            'titulo' => 'required|max:50',
             'descripcion' => 'required|max:500',
             'imagen' => 'required',
         ]);
@@ -33,14 +38,30 @@ class PostController extends Controller
         //     'imagen' => $r->imagen,
         //     'user_id' => Auth::user()->id,
         // ]);
+
         //otra forma de añadir registros
-        $post = new Post;
-        $post->titulo = $r->titulo;
-        $post->descripcion = $r->descripcion;
-        $post->imagen = $r->imagen;
-        $post->user_id = Auth::user()->id;
-        $post->save();
+        // $post = new Post;
+        // $post->titulo = $r->titulo;
+        // $post->descripcion = $r->descripcion;
+        // $post->imagen = $r->imagen;
+        // $post->user_id = Auth::user()->id;
+        // $post->save();
+
+        //otra forma
+        $r->user()->posts()->create([
+            'titulo' => $r->titulo,
+            'descripcion' => $r->descripcion,
+            'imagen' => $r->imagen,
+            'user_id' => Auth::user()->id,            
+        ]);
 
         return redirect()->route('post.index', Auth::user()->username);
+    }
+
+    public function show(User $user, Post $post){
+        return view('posts/show', [
+            'post' => $post,
+            'user' => $user
+        ]);
     }
 }

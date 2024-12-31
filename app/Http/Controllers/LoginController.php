@@ -24,8 +24,6 @@ class LoginController extends Controller
 
         // $user = User::where('email', $r->email)->first();
         //traer al usuario de la base de datos
-        return redirect()->route('post.index', [
-            'user' => Auth::user()->username
-        ]);
+        return redirect()->route('post.index', Auth::user());
     }
 }
