@@ -32,7 +32,7 @@ Crear una cuenta en DevsTagram
                 </div>
                 <div class="mb-5">
                     <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">Correo:</label>
-                    <input type="email" id="email" name="email" class="border p-4 w-full rounded-lg @error('name') border-red-700 @enderror" placeholder="Tu correo">
+                    <input type="email" id="email" name="email" class="border p-4 w-full rounded-lg @error('name') border-red-700 @enderror" placeholder="Tu correo" value="{{old('email')}}">
                     @error('email')
                         <p class="bg-red-700 text-white my-2 rounded-lg text-sm p-2 text-center font-bold">{{ $message }}</p>
                     @enderror

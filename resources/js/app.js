@@ -2,6 +2,7 @@ import Dropzone from 'dropzone';
 const d = document;
 const $formImg = d.getElementById("dropzone");
 const $imgInput = d.getElementById('imagen');
+const $btnPost = d.getElementById('btn_post');
 
 Dropzone.autoDiscover = false;
 
@@ -29,14 +30,13 @@ const dropzone = new Dropzone("#dropzone", {
 })
 
 dropzone.on("sending", function(file, xhr, formdata){
-    console.log(file);
     $formImg.classList.remove("text-white");
     $formImg.classList.add("text-red-700");
-    console.warn(formdata)
 })
 
 dropzone.on("success", function(file, response){
     $imgInput.value = response.imagen;
+    $btnPost.disabled = false;
 
 })
 
@@ -48,4 +48,5 @@ dropzone.on("removedfile", function(){
     $formImg.classList.add("text-white");
     $formImg.classList.remove("text-red-700");
     $imgInput.value = "";
+    $btnPost.disabled = true;
 })

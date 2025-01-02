@@ -11,7 +11,7 @@
     <body class="bg-slate-700 text-white m-0">
         <header class="p-5 bg-slate-900 m-0 text-white">
             <div class="container mx-auto flex justify-between items-center">
-                <a href="/"><h1 class="text-3xl font-black cursor-pointer">DevsTagram</h1></a>
+                <a href="/"><h1 class="text-3xl font-black cursor-pointer">FakeTagram</h1></a>
                 {{-- 1 forma de comprobar autenticacion --}}
                 {{-- @if(Auth::user())
                     <p>autenticado</p>

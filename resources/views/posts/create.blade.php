@@ -44,7 +44,7 @@ Nueva Publicacion
                 @enderror
             </div>
             <br>
-            <input type="submit" value="Crear Publicacion" class="bg-green-700 hover:bg-green-800 transition-colors cursor-pointer uppercase font-bold w-full p-4 rounded-lg text-white">
+            <input type="submit" value="Crear Publicacion" id="btn_post" class="bg-green-700 hover:bg-green-800 transition-colors cursor-pointer uppercase font-bold w-full p-4 rounded-lg text-white disabled:bg-red-300 disabled:line-through" disabled>
         </form>
     </div>  
 </div>

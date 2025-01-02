@@ -27,7 +27,7 @@ class PostController extends Controller
     public function store(Request $r){
         $r->validate([
             'titulo' => 'required|max:50',
-            'descripcion' => 'required|max:500',
+            'descripcion' => 'max:500',
             'imagen' => 'required',
         ]);
 
@@ -59,7 +59,7 @@ class PostController extends Controller
     }
 
     public function show(User $user, Post $post){
-        return view('posts/show', [
+        return view('posts.show', [
             'post' => $post,
             'user' => $user
         ]);

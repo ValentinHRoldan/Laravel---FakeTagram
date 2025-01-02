@@ -13,10 +13,10 @@ DevsTagram - {{$user->username}} - Post
     <div class="md:w-1/2">
         <img src="{{ asset('uploads') . '/' . $post->imagen}}" alt="Imagen del Post {{$post->titulo}}">
         <div class="p-3">
-            <p>55M Likes</p>
+            <p class="text-lg">55M Likes</p>
         </div>
         <div>
-            <p class="font-bold">{{$post->user->username}}</p>
+            <p class="font-bold text-xl">{{$post->user->username}}</p>
             <p class="text-sm text-gray-100">{{$post->created_at->diffForHumans()}}</p>
             <p class="mt-5">{{$post->descripcion}}</p>
         </div>

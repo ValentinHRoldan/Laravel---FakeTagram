@@ -18,6 +18,8 @@ class RegistroController extends Controller
     }
 
     public function store(Request $r){
+        //convierte el nombre de usuario en formato de link
+        //ej: Si Valentin Roldan -> valentin-roldan
         $r->request->add([
             'username' => Str::slug($r->username)
         ]);
@@ -29,6 +31,8 @@ class RegistroController extends Controller
             'password' => 'required|confirmed|min:5',
             'password_confirmation' => 'required'
         ]);
+
+
 
         User::create([
             // 'name' => $r.get('name');

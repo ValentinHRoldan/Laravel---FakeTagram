@@ -17,8 +17,12 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-
-        if(!Auth::attempt(['email' => $r->email, 'password' => $r->password], $r->remember)){
+        //nos logueamos, en caso contrario mostramos el mensaje de credenciales incorrectas
+        if(!Auth::attempt([
+            'email' => $r->email,
+            'password' => $r->password
+            ],
+            $r->remember)){
             return back()->with('mensaje', 'credenciales incorrectas');
         }
 
