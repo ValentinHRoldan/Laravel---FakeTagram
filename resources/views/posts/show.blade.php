@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('tituloHead')
-DevsTagram - {{$user->username}} - Post
+FakeTagram - {{$user->username}} - Post
 @endsection
 
 @section('titulo')

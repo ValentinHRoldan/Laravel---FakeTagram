@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('tituloHead')
-DevsTagram - Crear Publicacion
+FakeTagram - Crear Publicacion
 @endsection
 
 @section('titulo')

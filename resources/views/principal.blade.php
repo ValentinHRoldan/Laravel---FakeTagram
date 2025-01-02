@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('tituloHead')
-Laravel - Principal
+FakeTagram - Principal
 @endsection
 
 @section('titulo')

@@ -1,11 +1,11 @@
 @extends('layouts.base')
 
 @section('tituloHead')
-DevsTagram - Login
+FakeTagram - Login
 @endsection
 
 @section('titulo')
-Iniciar Sesion En DevsTagram
+Iniciar Sesion En FakeTagram
 @endsection
 
 @section('contenido')
