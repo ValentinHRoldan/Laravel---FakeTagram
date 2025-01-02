@@ -8,24 +8,20 @@ FakeTagram - Login
 Iniciar Sesion En FakeTagram
 @endsection
 
-@push('email_username')
-@vite('resources/js/script_email_username.js')
-@endpush
-
 @section('contenido')
     <div class="md:flex  md:justify-center md:gap-1 md:items-center">
         <div class="md:w-6/12 p-20">
             <img src="{{asset('img/login.jpg')}}" alt="">
         </div>
         <div class="md:w-4/12 bg-white text-black p-6 rounded-lg shadow">
-            <form action="{{ route('post.login') }}" method="POST">
+            <form action="{{ route('login.post') }}" method="POST">
                 @csrf
                 @if(session('mensaje'))
                     <p class="bg-red-700 text-white my-2 rounded-lg text-sm p-2 text-center font-bold">{{ session('mensaje') }}</p>                    
                 @endif
                 <div class="mb-5">
                     <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">Username o Correo:</label>
-                    <input type="email" id="email" name="email" class="border p-4 w-full rounded-lg @error('name') border-red-700 @enderror" placeholder="Tu nombre de usuario o correo">
+                    <input type="text" id="email" name="email" class="border p-4 w-full rounded-lg @error('name') border-red-700 @enderror" placeholder="Tu nombre de usuario o correo">
                     @error('email')
                         <p class="bg-red-700 text-white my-2 rounded-lg text-sm p-2 text-center font-bold">{{ $message }}</p>
                     @enderror

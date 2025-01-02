@@ -14,6 +14,8 @@ class PostController extends Controller
         //si como parametro tenemos User $user estamos haciendo uso del route model binding de laravel, esto indica que laravel automaticamente busca en la base de datos con el nombre de usuario recibido del archivo de rutas
 
         $postsUser = Post::where('user_id', $user->id)->paginate(8);
+        //tambien se puede hacer asi:
+        // $postsUser = $user->posts()->paginate(8);
         return view('auth.dashboard', [
             'user' => $user,
             'posts' => $postsUser
