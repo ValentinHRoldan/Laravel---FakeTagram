@@ -49,4 +49,4 @@ dropzone.on("removedfile", function(){
     $formImg.classList.remove("text-red-700");
     $imgInput.value = "";
     $btnPost.disabled = true;
-})
+});

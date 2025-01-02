@@ -12,6 +12,9 @@ Nueva Publicacion
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 @endpush
 
+@push('script_img')
+@vite('resources/js/script_img.js')
+@endpush
 
 @section('contenido')
 <div class="md:flex  md:justify-center md:gap-1 md:items-center">

@@ -4,8 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @stack('styles')
+        @stack('script_img')
+        @stack('email_username')
         @vite('resources/css/app.css')
-        @vite('resources/js/app.js')
         <title>@yield('tituloHead')</title>
     </head>
     <body class="bg-slate-700 text-white m-0">
