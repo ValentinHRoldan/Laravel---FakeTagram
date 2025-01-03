@@ -20,10 +20,6 @@ class ComentarioController extends Controller
             'post_id' => $post->id,
             'comentario' => $r->comentario
         ]);
-
-        return redirect()->route('post.show', [
-            'user'=>$user,
-            'post'=>$post->id
-        ]);
+        return back()->with('mensaje', 'comentario realizado con exito!');
     }
 }

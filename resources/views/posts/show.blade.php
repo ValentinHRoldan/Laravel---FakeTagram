@@ -9,7 +9,7 @@ FakeTagram - {{$user->username}} - Post
 @endsection
 
 @section('contenido')
-<div class="container mx-auto flex">
+<div class="container mx-auto md:flex">
     <div class="md:w-1/2">
         <img src="{{ asset('uploads') . '/' . $post->imagen}}" alt="Imagen del Post {{$post->titulo}}">
         <div class="p-3">
@@ -31,6 +31,11 @@ FakeTagram - {{$user->username}} - Post
             
             @auth
             <p class="text-xl font-bold text-center mb-4">Agrega un nuevo comentario</p>
+            @if(session('mensaje'))
+            <div class="bg-green-600 p-2 rounded-lg mb-6 text-white text-center uppercase font-bold">
+                {{session('mensaje')}}
+            </div>
+            @endif
             <form action="{{route('comentario.store', ['user'=>$user, 'post'=>$post])}}" method="POST">
                 @csrf
                 <div class="mb-5">
@@ -43,9 +48,22 @@ FakeTagram - {{$user->username}} - Post
                 <input type="submit" value="Comentar publicacion" class="bg-green-700 hover:bg-green-800 transition-colors cursor-pointer uppercase font-bold w-full p-4 rounded-lg text-white">
             </form>
             @endauth
+            <div class="bg-white shadow mb-5 max-h-96 overflow-y-scroll mt-10">
+                @if($post->comentarios->count())
+                    @foreach($post->comentarios as $comentario)
+                        <div class="p-5 border-gray-400 border-b">
+                            <a href="{{route('post.index', $comentario->user)}}" class="font-bold">{{$comentario->user->username}}</a>
+                            <p>{{$comentario->comentario}}</p>
+                            <p>{{$comentario->created_at->diffForHumans()}}</p>
+                        </div>
+                    @endforeach
+                @else
+                    <p class="p-10 text-center">NO HAY NADA TODAVIA</p>
+                @endif
+            </div>
         </div>
     </div>
-    
+
 </div>
 
 @endsection
