@@ -1,5 +1,4 @@
 const d = document;
-const $btnEliminar = d.getElementById('btn_delete_post');
 const $formDelete = d.getElementById('delete_form');
 
 function confirmCancel(enlace) {
@@ -18,10 +17,6 @@ function confirmCancel(enlace) {
         }
     });
 }
-
-// $btnEliminar.addEventListener('click', function(e){
-//     confirmCancel($formDelete.action);
-// });
 
 $formDelete.addEventListener('submit', function(e){
     e.preventDefault();
