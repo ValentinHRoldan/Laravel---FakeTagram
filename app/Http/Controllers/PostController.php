@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate as FacadesGate;
 
 class PostController extends Controller
@@ -68,9 +69,21 @@ class PostController extends Controller
         ]);
     }
 
+    private function eliminarImagen($imagenStr){
+        $imagen_path = public_path('uploads/' . $imagenStr);
+        if(File::exists($imagen_path)){
+            unlink($imagen_path);
+            
+        }
+    }
+
     public function destroy(Post $post){
         FacadesGate::authorize('delete', $post);
         $post->delete();
+
+        //eliminar la imagen
+        $this->eliminarImagen($post->imagen);
+
         return redirect()->route('post.index', Auth::user()->username);
     }
 }
