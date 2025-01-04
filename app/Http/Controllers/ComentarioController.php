@@ -22,4 +22,11 @@ class ComentarioController extends Controller
         ]);
         return back()->with('mensaje', 'comentario realizado con exito!');
     }
+
+    public function destroy(Comentario $comentario){
+        if(Auth::user()->id === $comentario->user->id){
+            $comentario->delete();
+            return back()->with('mensaje_delete', 'comentario eliminado');
+        }
+    }
 }

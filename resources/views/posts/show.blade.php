@@ -16,7 +16,8 @@ FakeTagram - {{$user->username}} - Post
             <p class="text-lg">55M Likes</p>
         </div>
         <div>
-            <p class="font-bold text-xl">{{$post->user->username}}</p>
+            <p class="font-bold text-2xl">{{$post->titulo}}</p>
+            <p class="text-xl">{{$post->user->username}}</p>
             <p class="text-sm text-gray-100">{{$post->created_at->diffForHumans()}}</p>
             <p class="mt-5">{{$post->descripcion}}</p>
         </div>
@@ -43,8 +44,13 @@ FakeTagram - {{$user->username}} - Post
             @auth
             <p class="text-xl font-bold text-center mb-4">Agrega un nuevo comentario</p>
             @if(session('mensaje'))
-            <div class="bg-green-600 p-2 rounded-lg mb-6 text-white text-center uppercase font-bold">
+            <div class="bg-green-600 p-2 rounded-lg mb-6 text-white text-center uppercase font-bold" id="msg_agregacion">
                 {{session('mensaje')}}
+            </div>
+            @endif
+            @if(session('mensaje_delete'))
+            <div class="bg-red-600 p-2 rounded-lg mb-6 text-white text-center uppercase font-bold" id="msg_eliminacion">
+                {{session('mensaje_delete')}}
             </div>
             @endif
             <form action="{{route('comentario.store', ['user'=>$user, 'post'=>$post])}}" method="POST">
@@ -58,19 +64,29 @@ FakeTagram - {{$user->username}} - Post
                 </div>
                 <input type="submit" value="Comentar publicacion" class="bg-green-700 hover:bg-green-800 transition-colors cursor-pointer uppercase font-bold w-full p-4 rounded-lg text-white">
             </form>
-            @endauth
+            
             <div class="bg-white shadow mb-5 max-h-96 overflow-y-scroll mt-10">
                 @if($post->comentarios->count())
                     @foreach($post->comentarios as $comentario)
-                        <div class="p-5 border-gray-400 border-b">
+                    <div class="p-5 border-gray-400 border-b flex justify-between items-center">
+                        <div>
                             <a href="{{route('post.index', $comentario->user)}}" class="font-bold">{{$comentario->user->username}}</a>
                             <p>{{$comentario->comentario}}</p>
                             <p>{{$comentario->created_at->diffForHumans()}}</p>
                         </div>
+                        @if(auth()->user()->id === $comentario->user->id)
+                        <form action="{{route('comentario.destroy', $comentario)}}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <input type="submit" class="text-red-500 hover:text-red-700 cursor-pointer" value="Eliminar Comentario">
+                        </form>
+                        @endif
+                    </div>
                     @endforeach
                 @else
                     <p class="p-10 text-center font-bold uppercase">no hay nada aún</p>
                 @endif
+                @endauth
             </div>
         </div>
     </div>

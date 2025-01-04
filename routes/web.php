@@ -43,3 +43,5 @@ Route::get('/{user:username}/post/{post}', [PostController::class, 'show'])->nam
 Route::post('/{user:username}/post/{post}', [ComentarioController::class, 'store'])->name('comentario.store');
 
 Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+Route::delete('post/comentario/{comentario}', [ComentarioController::class, 'destroy'])->name('comentario.destroy');

@@ -1,5 +1,7 @@
 const d = document;
 const $formDelete = d.getElementById('delete_form');
+const $msg_agregacion = d.getElementById('msg_agregacion');
+const $msg_eliminacion = d.getElementById('msg_eliminacion');
 
 function confirmCancel(enlace) {
     Swal.fire({
@@ -18,7 +20,22 @@ function confirmCancel(enlace) {
     });
 }
 
-$formDelete.addEventListener('submit', function(e){
-    e.preventDefault();
-    confirmCancel(this.action);
+if($formDelete){
+    $formDelete.addEventListener('submit', function(e){
+        e.preventDefault();
+        confirmCancel(this.action);
+    })
+}
+
+d.addEventListener('DOMContentLoaded', function(e){
+    if($msg_agregacion){
+        setTimeout(function(){
+            $msg_agregacion.style.display = "none";
+        }, 2500);
+    }
+    if($msg_eliminacion){
+        setTimeout(function(){
+            $msg_eliminacion.style.display = "none";
+        }, 2500);
+    }
 })
