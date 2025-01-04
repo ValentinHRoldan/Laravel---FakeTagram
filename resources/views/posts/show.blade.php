@@ -20,6 +20,15 @@ FakeTagram - {{$user->username}} - Post
             <p class="text-sm text-gray-100">{{$post->created_at->diffForHumans()}}</p>
             <p class="mt-5">{{$post->descripcion}}</p>
         </div>
+        @if(auth()->user()->id === $user->id)
+        <div>
+            <form action="{{route('posts.destroy', $post)}}" method="POST" id="delete_form">
+                @method('DELETE')
+                @csrf
+                <input type="submit" class="bg-red-600 hover:bg-red-800 font-bold uppercase p-2 rounded-lg mt-10" value="eliminar publicacion" id="btn_delete_post">
+            </form>
+        </div>
+        @endif
     </div>
     
     <div class="md:w-1/2 p-5">
@@ -58,12 +67,16 @@ FakeTagram - {{$user->username}} - Post
                         </div>
                     @endforeach
                 @else
-                    <p class="p-10 text-center">NO HAY NADA TODAVIA</p>
+                    <p class="p-10 text-center font-bold uppercase">no hay nada aún</p>
                 @endif
             </div>
         </div>
     </div>
 
 </div>
-
 @endsection
+
+@push('alertaConfirm')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@vite('resources/js/script_delete.js')
+@endpush

@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate as FacadesGate;
 
 class PostController extends Controller
 {
@@ -65,5 +66,11 @@ class PostController extends Controller
             'post' => $post,
             'user' => $user
         ]);
+    }
+
+    public function destroy(Post $post){
+        FacadesGate::authorize('delete', $post);
+        $post->delete();
+        return redirect()->route('post.index', Auth::user()->username);
     }
 }

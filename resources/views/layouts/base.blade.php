@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @stack('styles')
         @stack('script_img')
+        @stack('alertaConfirm')
         @vite('resources/css/app.css')
         <title>@yield('tituloHead')</title>
     </head>
