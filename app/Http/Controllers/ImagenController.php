@@ -18,7 +18,10 @@ class ImagenController extends Controller
         // read image from file system
         $image = $manager->read($imagen);
         // Image Crop
-        $image->crop(1000,1000);
+        $image->resize(1000, 1000, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize(); // Prevent the image from being upsized
+        });
 
         //Save the file
         $image->save($imagenPath);

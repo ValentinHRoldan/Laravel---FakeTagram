@@ -13,11 +13,12 @@ const dropzone = new Dropzone("#dropzone", {
     dictRemoveFile: "Eliminar archivo",
     maxFiles: 1,
     uploadMultiple: false,
+    maxFilesize: 5,
 
     init: function(){
         if($imgInput.value.trim()){
             const imagenPublicada = {};
-            imagenPublicada.size = 123;
+            imagenPublicada.size = 1234;
             imagenPublicada.name = $imgInput.value;
             this.options.addedfile.call(this, imagenPublicada);
             this.options.thumbnail.call(this, imagenPublicada, `/uploads/${imagenPublicada.name}`);

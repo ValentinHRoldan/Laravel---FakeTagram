@@ -20,6 +20,7 @@ FakeTagram - {{$user->username}} - Post
             <p class="text-sm text-gray-100">{{$post->created_at->diffForHumans()}}</p>
             <p class="mt-5">{{$post->descripcion}}</p>
         </div>
+        @auth
         @if(auth()->user()->id === $user->id)
         <div>
             <form action="{{route('posts.destroy', $post)}}" method="POST" id="delete_form">
@@ -29,6 +30,7 @@ FakeTagram - {{$user->username}} - Post
             </form>
         </div>
         @endif
+        @endauth
     </div>
     
     <div class="md:w-1/2 p-5">
