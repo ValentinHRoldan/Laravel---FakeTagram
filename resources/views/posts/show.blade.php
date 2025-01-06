@@ -12,8 +12,32 @@ FakeTagram - {{$user->username}} - Post
 <div class="container mx-auto md:flex">
     <div class="md:w-1/2">
         <img src="{{ asset('uploads') . '/' . $post->imagen}}" alt="Imagen del Post {{$post->titulo}}">
-        <div class="p-3">
-            <p class="text-lg">55M Likes</p>
+        <div class="p-3 flex items-center gap-4">
+            @auth
+            <form action="{{route('post.like.store', $post)}}" method="POST" id="form-like">
+                @csrf
+                <div class="my-4">
+                    @if($post->checkLike(auth()->user()))
+                    <button type="submit" id="btn-like">
+                        <i class="fa-solid fa-heart fa-2xl" style="color: #ff0000; animation-iteration-count: 1;"></i>
+                    </button>
+                    @else
+                    <button type="submit" id="btn-like">
+                        <i class="fa-regular fa-heart fa-2xl" style="color: #ffffff; animation-iteration-count: 1;"></i>
+                    </button>
+                    @endif
+                    <input type="hidden" value="{{$post->id}}" id="post-id">
+                </div>      
+            </form>                
+            @endauth
+            @guest
+            <div class="my-4">
+                <a href="{{route('login')}}">
+                    <i class="fa-regular fa-heart fa-2xl" style="color: #ffffff; animation-iteration-count: 1;"></i>
+                </a>
+            </div>      
+            @endguest
+            <p class="text-lg">{{$post->likes->count()}} Likes</p>
         </div>
         <div>
             <p class="font-bold text-2xl">{{$post->titulo}}</p>
@@ -97,4 +121,8 @@ FakeTagram - {{$user->username}} - Post
 @push('alertaConfirm')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @vite('resources/js/script_delete.js')
+@endpush
+
+@push('like')
+@vite('resources/js/script_like.js')
 @endpush

@@ -6,7 +6,9 @@
         @stack('styles')
         @stack('script_img')
         @stack('alertaConfirm')
+        @stack('like')
         @vite('resources/css/app.css')
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <title>@yield('tituloHead')</title>
     </head>
     <body class="bg-slate-700 text-white m-0">
