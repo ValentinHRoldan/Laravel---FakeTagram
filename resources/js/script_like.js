@@ -22,7 +22,7 @@ $like.addEventListener('click', function(e){
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data.message); // Mensaje de éxito
+            document.getElementById('like-count').innerText = `${data.likeCount} Likes`
         })
         .catch(error => {
             console.error('Error:', error);
@@ -36,3 +36,15 @@ $like.addEventListener('click', function(e){
     }
 })
 
+document.addEventListener('DOMContentLoaded', function(e){
+    fetch(`/posts/${postId}/likecount`, {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('like-count').innerText = `${data.likeCount} Likes`
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });    
+})

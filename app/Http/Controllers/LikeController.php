@@ -23,7 +23,13 @@ class LikeController extends Controller
         ]);
 
         $likeCount = $post->likes->count();
-        
+
         return response()->json(['message' => 'Post liked successfully', 'likeCount' => $likeCount]);
     }
+
+    public function likeCount(Post $post){
+        return response()->json(['likeCount' => $post->likes->count()]);
+    }
+
+
 }

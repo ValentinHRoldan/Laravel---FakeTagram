@@ -48,3 +48,6 @@ Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.d
 Route::delete('post/comentario/{comentario}', [ComentarioController::class, 'destroy'])->name('comentario.destroy');
 
 Route::post('/posts/{post}/like', [LikeController::class, 'store'])->name('post.like.store');
+
+
+Route::get('/posts/{post}/likecount', [LikeController::class, 'likeCount'])->name('post.likeCount');

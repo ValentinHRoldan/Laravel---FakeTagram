@@ -12,7 +12,7 @@ FakeTagram - {{$user->username}} - Post
 <div class="container mx-auto md:flex">
     <div class="md:w-1/2">
         <img src="{{ asset('uploads') . '/' . $post->imagen}}" alt="Imagen del Post {{$post->titulo}}">
-        <div class="p-3 flex items-center gap-4">
+        <div class="p-3 flex items-center gap-3">
             @auth
             <form action="{{route('post.like.store', $post)}}" method="POST" id="form-like">
                 @csrf
@@ -37,7 +37,7 @@ FakeTagram - {{$user->username}} - Post
                 </a>
             </div>      
             @endguest
-            <p class="text-lg">{{$post->likes->count()}} Likes</p>
+            <p class="text-lg font-bold" id="like-count"></p>
         </div>
         <div>
             <p class="font-bold text-2xl">{{$post->titulo}}</p>
