@@ -14,21 +14,29 @@ FakeTagram - {{$user->username}} - Post
         <img src="{{ asset('uploads') . '/' . $post->imagen}}" alt="Imagen del Post {{$post->titulo}}">
         <div class="p-3 flex items-center gap-3">
             @auth
-            <form action="{{route('post.like.store', $post)}}" method="POST" id="form-like">
+            @if($post->checkLike(auth()->user()))
+            <input type="hidden" value="{{route('post.like.destroy', $post)}}" id="url">
+            <form method="POST" id="form-like">
+                @method('DELETE')
                 @csrf
                 <div class="my-4">
-                    @if($post->checkLike(auth()->user()))
                     <button type="submit" id="btn-like">
                         <i class="fa-solid fa-heart fa-2xl" style="color: #ff0000; animation-iteration-count: 1;"></i>
-                    </button>
-                    @else
+                    </button>              
+                </div>      
+            </form> 
+            @else
+            <input type="hidden" value="{{route('post.like.store', $post)}}" id="url">
+            <form method="POST" id="form-like">
+                @csrf
+                <div class="my-4">
                     <button type="submit" id="btn-like">
                         <i class="fa-regular fa-heart fa-2xl" style="color: #ffffff; animation-iteration-count: 1;"></i>
-                    </button>
-                    @endif
-                    <input type="hidden" value="{{$post->id}}" id="post-id">
+                    </button>            
                 </div>      
-            </form>                
+            </form> 
+            @endif
+            <input type="hidden" value="{{$post->id}}" id="post-id">
             @endauth
             @guest
             <div class="my-4">

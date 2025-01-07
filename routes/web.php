@@ -51,3 +51,5 @@ Route::post('/posts/{post}/like', [LikeController::class, 'store'])->name('post.
 
 
 Route::get('/posts/{post}/likecount', [LikeController::class, 'likeCount'])->name('post.likeCount');
+
+Route::delete('/posts/{post}/like', [LikeController::class, 'destroy'])->name('post.like.destroy');

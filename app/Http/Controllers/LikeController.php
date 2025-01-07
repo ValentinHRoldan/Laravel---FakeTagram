@@ -31,5 +31,9 @@ class LikeController extends Controller
         return response()->json(['likeCount' => $post->likes->count()]);
     }
 
+    public function destroy(Request $r, Post $post){
+        $r->user()->likes()->where('post_id', $post->id)->delete();
 
+        return response()->json(['message' => 'Post liked successfully', 'likeCount' => $post->likes->count()]);
+    }
 }

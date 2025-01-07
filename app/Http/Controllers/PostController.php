@@ -73,7 +73,6 @@ class PostController extends Controller
         $imagen_path = public_path('uploads/' . $imagenStr);
         if(File::exists($imagen_path)){
             unlink($imagen_path);
-            
         }
     }
 
