@@ -33,7 +33,7 @@ Perfil: {{$user->username}}
                     @endif
                 </div>
 
-                <p class="text-gray-100 text-sm mb-3 font-bold mt-5"> 0
+                <p class="text-gray-100 text-sm mb-3 font-bold mt-5"> {{$user->followers->count()}}
                     <span class="font-normal">Seguidores</span>
                 </p>
                 <p class="text-gray-100 text-sm mb-3 font-bold"> 0
@@ -42,6 +42,22 @@ Perfil: {{$user->username}}
                 <p class="text-gray-100 text-sm mb-3 font-bold"> {{$user->posts->count()}}
                     <span class="font-normal">Posts</span>
                 </p>
+                @auth
+                @if($user->id !== auth()->user()->id)
+                    @if($user->checkFollow(auth()->user()->id))
+                    <form action="{{route('users.unfollow', $user->username)}}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <input type="submit" value="dejar de seguir" class=" bg-red-700 hover:bg-red-800 hover:text-gray-300 uppercase rounded-lg px-4 py-1 text-xl font-bold cursor-pointer">
+                    </form>
+                    @else
+                    <form action="{{route('users.follow', $user->username)}}" method="POST">
+                        @csrf
+                        <input type="submit" value="Seguir" class=" bg-purple-700 hover:bg-purple-800 hover:text-gray-300 uppercase rounded-lg px-4 py-1 text-xl font-bold cursor-pointer">
+                    </form>
+                    @endif
+                @endif
+                @endauth
             </div>
         </div>
     </div>
