@@ -5,6 +5,7 @@ use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegistroController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,13 @@ Route::post('/login', [LoginController::class, 'store'])->name('login.post');
 
 Route::post('/logout', [LogoutController::class, 'index'])->name('logout');
 
+//rutas para editar perfil
+
+Route::get('/editar-perfil', [PerfilController::class, 'index'])->name('perfil.index');
+
+Route::post('/editar-perfil', [PerfilController::class, 'store'])->name('perfil.store');
+
+
 //entre llave va el nombre del modelo, en este caso el modelo User
 //Route Model Binding
 Route::get('/{user:username}', [PostController::class, 'index'])->name('post.index');
@@ -47,9 +55,10 @@ Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.d
 
 Route::delete('post/comentario/{comentario}', [ComentarioController::class, 'destroy'])->name('comentario.destroy');
 
-Route::post('/posts/{post}/like', [LikeController::class, 'store'])->name('post.like.store');
+Route::post('/posts/{post}/like', [LikeController::class, 'store'])->name('post.like.store')->middleware('auth');
 
 
 Route::get('/posts/{post}/likecount', [LikeController::class, 'likeCount'])->name('post.likeCount');
 
 Route::delete('/posts/{post}/like', [LikeController::class, 'destroy'])->name('post.like.destroy');
+

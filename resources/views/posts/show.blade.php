@@ -15,8 +15,7 @@ FakeTagram - {{$user->username}} - Post
         <div class="p-3 flex items-center gap-3">
             @auth
             @if($post->checkLike(auth()->user()))
-            <input type="hidden" value="{{route('post.like.destroy', $post)}}" id="url">
-            <form method="POST" id="form-like">
+            <form method="POST" action="{{route('post.like.destroy', $post)}}" id="form-like">
                 @method('DELETE')
                 @csrf
                 <div class="my-4">
@@ -26,8 +25,7 @@ FakeTagram - {{$user->username}} - Post
                 </div>      
             </form> 
             @else
-            <input type="hidden" value="{{route('post.like.store', $post)}}" id="url">
-            <form method="POST" id="form-like">
+            <form method="POST" action="{{route('post.like.store', $post)}}" id="form-like">
                 @csrf
                 <div class="my-4">
                     <button type="submit" id="btn-like">

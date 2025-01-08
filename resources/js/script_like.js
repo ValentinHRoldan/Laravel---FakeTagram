@@ -3,7 +3,6 @@ const $likeIcon = $like.childNodes[1];
 const $formLike = document.getElementById('form-like');
 let formData = new FormData($formLike);
 let postId = document.getElementById('post-id').value;
-const $url = document.getElementById('url').value;
 
 $like.addEventListener('click', function(e){
     if($likeIcon.classList.contains('fa-regular')){
@@ -12,7 +11,7 @@ $like.addEventListener('click', function(e){
         $likeIcon.style["color"] = "red";
         e.preventDefault();
 
-        fetch($url, {
+        fetch($formLike.action, {
             method: 'POST',
             body: formData,
             headers: {
@@ -33,7 +32,7 @@ $like.addEventListener('click', function(e){
         $likeIcon.style["color"] = "white";  
         e.preventDefault();
 
-        fetch($url, {
+        fetch($formLike.action, {
             method: 'POST',
             body: formData,
             headers: {
