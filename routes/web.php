@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginController;
@@ -13,14 +14,16 @@ use Illuminate\Support\Facades\Route;
 
 // usa un closure o callback
 
-Route::get('/', function () {
-    return view('principal');
-});
+// Route::get('/', function () {
+//     return view('principal');
+// });
 
 
-Route::get('/nosotros', function(){
-    return view('nosotros');
-});
+// Route::get('/nosotros', function(){
+//     return view('nosotros');
+// });
+
+Route::get('/', HomeController::class)->name('home');
 
 Route::get('/registro', [RegistroController::class, 'index'])->name('registro');
 Route::post('/registro', [RegistroController::class, 'store'])->name('registro');
