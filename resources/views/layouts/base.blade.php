@@ -21,8 +21,6 @@
                 @else 
                     <p>no autenticado</p>
                 @endif --}}
-
-
                 @guest
                 <nav class="flex gap-2 items-center">
                     <a href="{{ route('login') }}" class="text-sm font-bold text-white uppercase p-2 bg-green-600 rounded-lg">Login</a>
@@ -41,9 +39,14 @@
                               </svg>
                               Publicar
                         </a>
-
-                        <a href="{{ route('post.index', auth()->user()->username) }}" class="text-sm font-bold text-white uppercase p-3 bg-slate-500 hover:bg-slate-700 rounded-lg">{{ auth()->user()->username }}</a>
-
+                        <a href="{{ route('post.index', auth()->user()->username) }}">
+                            <div class="flex items-center bg-slate-500 hover:bg-slate-700 rounded-lg pl-2">
+                                <div class="w-10 h-10 overflow-hidden rounded-full">
+                                    <img src="{{ asset('perfiles/' . auth()->user()->imagen) }}" alt="Imagen usuario" class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-sm font-bold text-white uppercase p-3 ">{{ auth()->user()->username }}</p>
+                            </div>
+                        </a>
                         <input type="submit" class="text-sm font-bold text-gray-50 uppercase cursor-pointer hover:bg-red-800 p-3 rounded-lg bg-red-700" value="Cerrar Sesion">
                     </nav>
                 </form>
