@@ -8,6 +8,7 @@
         @stack('alertaConfirm')
         @stack('like')
         @vite('resources/css/app.css')
+        @livewireStyles
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <title>@yield('tituloHead')</title>
     </head>
@@ -63,5 +64,6 @@
         <footer class="mt-10 text-center p-5 text-gray-500 font-bold uppercase">
             Cursito laravel 2025 😎
         </footer>
+        @livewireScripts
     </body>
 </html>

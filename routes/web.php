@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('nosotros');
 // });
 
-Route::get('/', HomeController::class)->name('home');
+Route::get('/', HomeController::class)->name('home')->middleware('auth');
 
 Route::get('/registro', [RegistroController::class, 'index'])->name('registro');
 Route::post('/registro', [RegistroController::class, 'store'])->name('registro');

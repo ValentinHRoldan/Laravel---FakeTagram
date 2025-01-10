@@ -13,8 +13,16 @@ FakeTagram - {{$user->username}} - Post
     <div class="md:w-1/2">
         <img src="{{ asset('uploads') . '/' . $post->imagen}}" alt="Imagen del Post {{$post->titulo}}">
         <div class="p-3 flex items-center gap-3">
+            @guest
+            <div class="my-4">
+                <a href="{{route('login')}}">
+                    <i class="fa-regular fa-heart fa-2xl" style="color: #ffffff; animation-iteration-count: 1;"></i>
+                </a>
+            </div>      
+            @endguest
             @auth
-            @if($post->checkLike(auth()->user()))
+            <livewire:post-like :post='$post'>
+            {{-- @if($post->checkLike(auth()->user()))
             <form method="POST" action="{{route('post.like.destroy', $post)}}" id="form-like">
                 @method('DELETE')
                 @csrf
@@ -33,16 +41,9 @@ FakeTagram - {{$user->username}} - Post
                     </button>            
                 </div>      
             </form> 
-            @endif
+            @endif --}}
             <input type="hidden" value="{{$post->id}}" id="post-id">
             @endauth
-            @guest
-            <div class="my-4">
-                <a href="{{route('login')}}">
-                    <i class="fa-regular fa-heart fa-2xl" style="color: #ffffff; animation-iteration-count: 1;"></i>
-                </a>
-            </div>      
-            @endguest
             <p class="text-lg font-bold" id="like-count"></p>
         </div>
         <div>
