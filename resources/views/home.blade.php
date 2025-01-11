@@ -25,12 +25,14 @@ Pagina Principal
         <div class="overflow-hidden rounded-md">
             <p class="font-bold uppercase text-2xl text-center">{{$post->titulo}}</p>
             <a href="{{route('post.show', ['post' => $post, 'user' => $post->user])}}">
-                <img src="{{ asset('uploads') . '/' . $post->imagen}}" alt="{{$post->titulo}}">
+                <img src="{{ asset('uploads') . '/' . $post->imagen}}" alt="{{$post->titulo}}" class=" my-3">
             </a>
-            <p class=" uppercase text-xl text-center">{{$post->user->username}}</p>
+            <a href="{{route('post.index', $post->user)}}">
+                <p class=" uppercase text-xl text-center hover:text-gray-300">{{$post->user->username}}</p>
+            </a>
             <p class=" uppercase text-xl text-center">{{$post->created_at}}</p>
             <p class=" uppercase text-xl text-center"><span class="font-bold">
-            <div class="flex items-center gap-3 justify-center">
+            <div class="flex items-center gap-3 justify-center my-2">
                 <livewire:post-like :post='$post'>
             </div>
         </div>
