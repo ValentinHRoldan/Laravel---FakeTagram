@@ -27,7 +27,7 @@ FakeTagram - {{$user->username}} - Post
         </div>
         <div>
             <p class="font-bold text-2xl">{{$post->titulo}}</p>
-            <p class="text-xl">{{$post->user->username}}</p>
+            <a href="{{route('post.index', $post->user)}}" class="text-xl hover:text-gray-300">{{$post->user->username}}</a>
             <p class="text-sm text-gray-100">{{$post->created_at->diffForHumans()}}</p>
             <p class="mt-5">{{$post->descripcion}}</p>
         </div>
@@ -80,7 +80,7 @@ FakeTagram - {{$user->username}} - Post
                     @foreach($post->comentarios as $comentario)
                     <div class="p-5 border-gray-400 border-b flex justify-between items-center">
                         <div>
-                            <a href="{{route('post.index', $comentario->user)}}" class="font-bold">{{$comentario->user->username}}</a>
+                            <a href="{{route('post.index', $comentario->user)}}" class="font-bold hover:text-gray-500">{{$comentario->user->username}}</a>
                             <p>{{$comentario->comentario}}</p>
                             <p>{{$comentario->created_at->diffForHumans()}}</p>
                         </div>

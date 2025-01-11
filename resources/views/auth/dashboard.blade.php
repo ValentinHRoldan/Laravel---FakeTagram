@@ -33,12 +33,12 @@ Perfil: {{$user->username}}
                     @endif
                 </div>
 
-                <p class="text-gray-100 text-sm mb-3 font-bold mt-5"> {{$user->followers->count()}}
-                    <span class="font-normal">@choice('Seguidor|Seguidores', $user->followers->count())</span>
-                </p>
-                <p class="text-gray-100 text-sm mb-3 font-bold"> {{$user->followings->count()}}
+                <a href="{{route('user.followers', $user->username)}}" class="text-gray-100 text-sm mb-3 font-bold mt-5 "> {{$user->followers->count()}}
+                    <span class="font-normal hover:text-gray-300">@choice('Seguidor|Seguidores', $user->followers->count())</span>
+                </a>
+                <a href="{{route('user.followings', $user->username)}}" class="text-gray-100 text-sm mb-3 font-bold"> {{$user->followings->count()}}
                     <span class="font-normal">Siguiendo</span>
-                </p>
+                </a>
                 <p class="text-gray-100 text-sm mb-3 font-bold"> {{$user->posts->count()}}
                     <span class="font-normal">Posts</span>
                 </p>

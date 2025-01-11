@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,7 @@ class PostLike extends Component
 
     public function like(){
         if($this->likeCheck){
-            $this->post->user->likes()->where('post_id', $this->post->id)->delete();
+            User::find(Auth::user()->id)->likes()->where('post_id', $this->post->id)->delete();
             $this->likeCheck = false;
             $this->likeCount--;
         }

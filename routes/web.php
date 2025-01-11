@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home')->middleware('auth');
 
+Route::get('/all-users', [HomeController::class, 'users'])->name('users.all');
+
 Route::get('/registro', [RegistroController::class, 'index'])->name('registro');
 Route::post('/registro', [RegistroController::class, 'store'])->name('registro');
 
@@ -64,8 +66,11 @@ Route::post('/posts/{post}/like', [LikeController::class, 'store'])->name('post.
 
 Route::get('/posts/{post}/likecount', [LikeController::class, 'likeCount'])->name('post.likeCount');
 
-Route::delete('/posts/{post}/like', [LikeController::class, 'destroy'])->name('post.like.destroy');
-
 Route::post('/{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
 
 Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');
+
+Route::get('/{user:username}/followers', [FollowerController::class, 'index'])->name('user.followers');
+
+Route::get('/{user:username}/followings', [FollowerController::class, 'followingsView'])->name('user.followings');
+

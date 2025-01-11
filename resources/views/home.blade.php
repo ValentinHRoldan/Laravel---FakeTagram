@@ -10,6 +10,7 @@ Pagina Principal
 
 
 @section('contenido')
+<br><hr><br>
 @if($posts->count())
     {{-- @foreach ($posts as $post)
         <p class="font-bold uppercase text-2xl text-center">{{$post->titulo}}</p>
@@ -30,20 +31,27 @@ Pagina Principal
             <p class=" uppercase text-xl text-center">{{$post->created_at}}</p>
             <p class=" uppercase text-xl text-center"><span class="font-bold">
             <div class="flex items-center gap-3 justify-center">
-                <form method="POST" action="{{route('post.like.store', $post)}}" id="form-like">
-                    @csrf
-                    <div class="my-4">
-                        <button type="submit" id="btn-like">
-                            <i class="fa-regular fa-heart fa-2xl" style="color: #ffffff; animation-iteration-count: 1;"></i>
-                        </button>            
-                    </div>      
-                </form>
-                <p class="text-center">{{$post->likes->count()}}</span> Likes</p>
+                <livewire:post-like :post='$post'>
             </div>
         </div>
         @endforeach
     </div>
 @else
-<p>No hay posts disponibles, sigue a un par de personas!</p>
+<p class="text-center font-bold text-2xl">No hay posts disponibles, sigue a un par de personas!</p>
+<br>
+<hr>
+<br>
+    {{-- vista de usuarios --}}
+<div>
+    <x-view-users-component/>
+</div>
+<br>
+<hr>
+<br>
+<div>
+    {{$users->links()}}
+</div>
 @endif
+<br><hr><br>
+<a href="{{route('users.all')}}" value="Iniciar Sesion" class="bg-orange-700 hover:bg-orange-800 transition-colors cursor-pointer uppercase font-bold w-full p-4 rounded-lg text-white inline-block text-center">Conoce a mas gente!</a>
 @endsection
