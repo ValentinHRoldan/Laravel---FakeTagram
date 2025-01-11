@@ -22,27 +22,6 @@ FakeTagram - {{$user->username}} - Post
             @endguest
             @auth
             <livewire:post-like :post='$post'>
-            {{-- @if($post->checkLike(auth()->user()))
-            <form method="POST" action="{{route('post.like.destroy', $post)}}" id="form-like">
-                @method('DELETE')
-                @csrf
-                <div class="my-4">
-                    <button type="submit" id="btn-like">
-                        <i class="fa-solid fa-heart fa-2xl" style="color: #ff0000; animation-iteration-count: 1;"></i>
-                    </button>              
-                </div>      
-            </form> 
-            @else
-            <form method="POST" action="{{route('post.like.store', $post)}}" id="form-like">
-                @csrf
-                <div class="my-4">
-                    <button type="submit" id="btn-like">
-                        <i class="fa-regular fa-heart fa-2xl" style="color: #ffffff; animation-iteration-count: 1;"></i>
-                    </button>            
-                </div>      
-            </form> 
-            @endif --}}
-            <input type="hidden" value="{{$post->id}}" id="post-id">
             @endauth
             <p class="text-lg font-bold" id="like-count"></p>
         </div>
